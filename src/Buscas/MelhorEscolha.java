@@ -117,8 +117,6 @@ public class MelhorEscolha implements Busca {
 	
 	public static void main (String[] args) {
 		
-		System.out.println("Testando commit");
-		
 		Problema problema = new Romenia("Arad", "Bucareste");
 		Busca agente = new MelhorEscolha();
 		
