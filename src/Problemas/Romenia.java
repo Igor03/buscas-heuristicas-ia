@@ -7,7 +7,6 @@ import Estruturas.Custo;
 import Estruturas.DLR;
 import Estruturas.Estado;
 
-
 public class Romenia implements Problema {
 
 	public LinkedList<Estado> romenia = new LinkedList<>();
@@ -311,6 +310,24 @@ public class Romenia implements Problema {
 	}
 
 	@Override
+	public Integer getDLR(Estado objetivo, Estado estadoAtual) {
+		// TODO Auto-generated method stub
+		Integer distancia = null;
+
+		if (!romenia.contains(objetivo) || !romenia.contains(estadoAtual)) {
+			System.out.println("Ocorreu um erro");
+			return distancia;
+		}
+
+		for (int i = 0; i < dlr.size(); i++) {
+			if (dlr.get(i).estadoInicial.equals(estadoAtual) && dlr.get(i).objetivo.equals(objetivo))
+				distancia = dlr.get(i).distancia;
+		}
+
+		return distancia;
+	}
+
+	@Override
 	public Estado getEstadoInicial() {
 		// TODO Auto-generated method stub
 		return estadoInicial;
@@ -340,24 +357,6 @@ public class Romenia implements Problema {
 		return romenia;
 	}
 
-	@Override
-	public Integer getDLR(Estado objetivo, Estado estadoAtual) {
-		// TODO Auto-generated method stub
-		Integer distancia = null;
-
-		if (!romenia.contains(objetivo) || !romenia.contains(estadoAtual)) {
-			System.out.println("Ocorreu um erro");
-			return distancia;
-		}
-
-		for (int i = 0; i < dlr.size(); i++) {
-			if (dlr.get(i).estadoInicial.equals(estadoAtual) && dlr.get(i).objetivo.equals(objetivo))
-				distancia = dlr.get(i).distancia;
-		}
-
-		return distancia;
-	}
-
 	public static void main(String[] args) {
 
 		Romenia romenia = new Romenia("Bucareste", "Arad");
@@ -370,13 +369,14 @@ public class Romenia implements Problema {
 
 		System.out.println();
 		for (int i = 0; i < romenia.Arad.acoes.size(); i++) {
-			System.out.println(romenia.getDLR(romenia.Bucareste, romenia.Arad.acoes.get(i)));
+			System.out.println(romenia.getDLR(romenia.Bucareste, romenia.Arad.acoes.get(i))
+					+ romenia.getCustoCaminho(romenia.Arad, romenia.Arad.acoes.get(i)));
 		}
 
 		teste = romenia.Arad.acoes;
-		
+
 		teste.add(romenia.Sibiu);
-		
+
 		Estado esta = teste.get(0);
 		int maior = romenia.getDLR(obj, teste.get(0));
 		for (int i = 0; i < teste.size(); i++) {

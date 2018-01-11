@@ -11,5 +11,7 @@ public interface Busca {
 	public LinkedList<No> expandir(No no);
 
 	public LinkedList<No> getBorda();
+	
+	public void mostrarCaminho ();
 
 }
