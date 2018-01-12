@@ -16,7 +16,7 @@ public class AEstrela implements Busca {
 	public LinkedList<Estado> explorados = new LinkedList<>();
 
 	@Override
-	public LinkedList<No> busca(Problema problema) {
+	public LinkedList<No> buscar(Problema problema) {
 		// TODO Auto-generated method stub
 
 		this.problema = problema;
@@ -113,7 +113,7 @@ public class AEstrela implements Busca {
 		Problema problema = new Romenia("Arad", "Bucareste");
 		Busca agente = new AEstrela();
 
-		agente.busca(problema);
+		agente.buscar(problema);
 	}
 
 }

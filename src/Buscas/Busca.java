@@ -6,7 +6,7 @@ import Problemas.*;
 
 public interface Busca {
 
-	public LinkedList<No> busca(Problema problema);
+	public LinkedList<No> buscar(Problema problema);
 
 	public LinkedList<No> expandir(No no);
 

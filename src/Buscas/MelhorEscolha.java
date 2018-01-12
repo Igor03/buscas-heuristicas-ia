@@ -17,7 +17,7 @@ public class MelhorEscolha implements Busca {
 	public LinkedList<Estado> explorados = new LinkedList<>();
 
 	@Override
-	public LinkedList<No> busca(Problema problema) {
+	public LinkedList<No> buscar(Problema problema) {
 		// TODO Auto-generated method stub
 
 		this.problema = problema;
@@ -30,7 +30,7 @@ public class MelhorEscolha implements Busca {
 				System.out.println("Ocorreu um erro!");
 				return null;
 			}
-			
+
 			no = getMenorDLR(borda);
 			borda.remove(no);
 			explorados.add(no.estado);
@@ -52,7 +52,7 @@ public class MelhorEscolha implements Busca {
 	@Override
 	public LinkedList<No> expandir(No no) {
 		// TODO Auto-generated method stub
-		
+
 		LinkedList<No> sucessores = new LinkedList<>();
 
 		for (int i = 0; i < problema.funcaoSucessora(no.estado).size(); i++) {
@@ -67,11 +67,11 @@ public class MelhorEscolha implements Busca {
 		return sucessores;
 
 	}
-	
+
 	@Override
 	public void mostrarCaminho() {
 		// TODO Auto-generated method stub
-		
+
 		No noAux = no;
 
 		while (noAux != null) {
@@ -91,7 +91,7 @@ public class MelhorEscolha implements Busca {
 	@Override
 	public LinkedList<No> getBorda() {
 		// TODO Auto-generated method stub
-		
+
 		return borda;
 	}
 
@@ -109,12 +109,12 @@ public class MelhorEscolha implements Busca {
 
 		return noAux;
 	}
-	
+
 	public static void main(String[] args) {
 
 		Problema problema = new Romenia("Arad", "Bucareste");
 		Busca agente = new MelhorEscolha();
-		agente.busca(problema);
+		agente.buscar(problema);
 
 	}
 }
